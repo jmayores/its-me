@@ -1,0 +1,429 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+.site{cursor:crosshair;background:#f2eedf;color:#0d0d0d;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;overflow-x:hidden;}
+.mono{font-family:'Space Mono',monospace;}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:999;background:#0d0d0d;border-bottom:4px solid #d42b2b;display:flex;justify-content:space-between;align-items:stretch;min-height:44px;}
+.nav-id{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:#d42b2b;display:flex;align-items:center;padding:0 18px;border-right:2px solid #222;}
+.nav-links{display:flex;}
+.nav-links a{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#f2eedf;text-decoration:none;padding:0 16px;display:flex;align-items:center;border-left:1px solid #2a2a2a;transition:background .1s,color .1s;}
+.nav-links a:hover{background:#d42b2b;color:#f2eedf;}
+.nav-right{margin-left:auto;display:flex;align-items:center;padding:0 16px;border-left:1px solid #2a2a2a;}
+.nav-right span{font-family:'Space Mono',monospace;font-size:9px;color:#555;letter-spacing:2px;}
+
+/* MARQUEE */
+.ticker{background:#d42b2b;border-top:3px solid #0d0d0d;border-bottom:3px solid #0d0d0d;overflow:hidden;white-space:nowrap;padding:9px 0;}
+.ticker-inner{display:inline-block;animation:tick 28s linear infinite;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#f2eedf;}
+@keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:52px 1fr;border-bottom:5px solid #0d0d0d;}
+.hero-spine{background:#d42b2b;border-right:5px solid #0d0d0d;display:flex;align-items:center;justify-content:center;}
+.hero-spine span{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:5px;color:#f2eedf;writing-mode:vertical-rl;transform:rotate(180deg);text-transform:uppercase;}
+.hero-body{padding:36px 28px 28px;position:relative;overflow:hidden;}
+.hero-ghost{position:absolute;font-size:180px;font-weight:900;color:rgba(0,0,0,.04);right:-10px;top:-24px;line-height:1;letter-spacing:-12px;pointer-events:none;user-select:none;}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;color:#d42b2b;margin-bottom:10px;text-transform:uppercase;}
+.hero-n1{display:block;font-size:clamp(60px,10vw,96px);font-weight:900;letter-spacing:-5px;line-height:.92;color:#0d0d0d;}
+.hero-n2{display:block;font-size:clamp(60px,10vw,96px);font-weight:900;letter-spacing:-5px;line-height:.92;color:#d42b2b;margin-left:clamp(32px,4vw,60px);}
+.hero-lower{display:flex;justify-content:space-between;align-items:flex-end;margin-top:32px;flex-wrap:wrap;gap:16px;}
+.hero-bio{font-family:'Space Mono',monospace;font-size:11px;line-height:2;color:#666;max-width:300px;}
+.hero-bio strong{color:#0d0d0d;}
+.hero-ledger{text-align:right;}
+.hero-ledger-row{font-family:'Space Mono',monospace;font-size:11px;margin-bottom:3px;color:#0d0d0d;}
+.hero-ledger-row b{color:#d42b2b;margin-right:8px;}
+
+/* SECTION HEADER */
+.sh{display:flex;align-items:stretch;border-bottom:3px solid #0d0d0d;position:relative;}
+.sh-num{width:52px;min-width:52px;background:#d42b2b;border-right:3px solid #0d0d0d;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#f2eedf;letter-spacing:2px;}
+.sh-title{font-size:clamp(22px,4vw,36px);font-weight:900;letter-spacing:-1.5px;text-transform:uppercase;padding:14px 20px;line-height:1;display:flex;align-items:center;}
+.sh-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#aaa;margin-left:auto;padding:0 20px;display:flex;align-items:center;border-left:1px solid rgba(0,0,0,.1);}
+.inv .sh{border-bottom-color:#2a2a2a;}
+.inv .sh-sub{border-left-color:rgba(255,255,255,.08);color:#555;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:3fr 2fr;}
+.about-left{padding:28px;border-right:3px solid #0d0d0d;}
+.about-left p{font-size:15px;line-height:1.8;margin-bottom:14px;color:#333;}
+.about-left p strong{color:#0d0d0d;}
+.about-left p em{color:#d42b2b;font-style:normal;font-weight:700;}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px;}
+.tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;border:2px solid #0d0d0d;color:#0d0d0d;background:transparent;cursor:crosshair;transition:background .1s,color .1s;}
+.tag:hover,.tag.r{background:#d42b2b;border-color:#d42b2b;color:#f2eedf;}
+.about-right{padding:0;}
+.facts-table{width:100%;border-collapse:collapse;font-family:'Space Mono',monospace;}
+.facts-table tr{border-bottom:1px solid rgba(0,0,0,.1);}
+.facts-table tr:last-child{border-bottom:none;}
+.facts-table td{padding:10px 16px;font-size:11px;vertical-align:middle;}
+.facts-table td:first-child{text-transform:uppercase;letter-spacing:1.5px;font-size:9px;color:#aaa;width:45%;border-right:1px solid rgba(0,0,0,.08);}
+.facts-table td:last-child{font-weight:700;color:#0d0d0d;}
+
+/* CAREER */
+.inv{background:#0d0d0d;color:#f2eedf;}
+.career-table{width:100%;border-collapse:collapse;}
+.career-table thead tr{background:#d42b2b;}
+.career-table th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;padding:11px 16px;text-align:left;color:#f2eedf;border-right:1px solid rgba(255,255,255,.15);font-weight:700;}
+.career-table th:last-child{border-right:none;}
+.career-table tbody tr{border-bottom:2px solid #1a1a1a;transition:background .1s,color .1s;cursor:crosshair;}
+.career-table tbody tr:hover{background:#f2eedf;color:#0d0d0d;}
+.career-table tbody tr:hover td{border-right-color:rgba(0,0,0,.08);color:#0d0d0d;}
+.career-table tbody tr:hover .c-num{color:#d42b2b;}
+.career-table tbody tr:hover .c-status{color:#666;}
+.career-table tbody tr:hover .c-note{color:#666;}
+.career-table tbody tr.live{background:#111;}
+.career-table tbody tr.live::before{}
+.career-table td{padding:14px 16px;font-size:13px;border-right:1px solid #1f1f1f;vertical-align:top;line-height:1.4;}
+.career-table td:last-child{border-right:none;}
+.c-num{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#d42b2b;width:38px;}
+.c-role{font-weight:700;}
+.c-company{font-family:'Space Mono',monospace;font-size:11px;color:#777;}
+.c-year{font-family:'Space Mono',monospace;font-size:11px;color:#666;white-space:nowrap;width:72px;}
+.c-status{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;width:80px;}
+.live .c-status{color:#d42b2b;}
+.c-note{font-size:12px;color:#666;max-width:220px;}
+.live .c-note{color:#888;}
+.skills-bar{border-top:2px solid #1a1a1a;padding:16px 20px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#0d0d0d;}
+.sk{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border:1.5px solid #333;color:#888;cursor:crosshair;transition:border-color .1s,color .1s;}
+.sk:hover{border-color:#d42b2b;color:#f2eedf;}
+
+/* INTERESTS */
+.int-grid{display:grid;grid-template-columns:1fr 200px;}
+.int-rows{}
+.int-row{display:flex;align-items:stretch;border-bottom:2px solid #0d0d0d;}
+.int-row:last-child{border-bottom:none;}
+.int-icon{width:52px;min-width:52px;border-right:2px solid #0d0d0d;display:flex;align-items:center;justify-content:center;font-size:20px;padding:14px 0;}
+.int-text{padding:16px 20px;flex:1;}
+.int-name{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
+.int-name.r{color:#d42b2b;}
+.int-blurb{font-family:'Space Mono',monospace;font-size:10px;color:#888;line-height:1.7;}
+.int-aside{border-left:3px solid #0d0d0d;padding:24px 16px;display:flex;flex-direction:column;gap:24px;}
+.aside-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#aaa;margin-bottom:6px;}
+.aside-big{font-size:36px;font-weight:900;letter-spacing:-2px;line-height:1;color:#0d0d0d;}
+.aside-big span{color:#d42b2b;}
+.aside-list{font-family:'Space Mono',monospace;font-size:10px;line-height:2.2;color:#888;}
+.aside-list span{color:#0d0d0d;font-weight:700;}
+
+/* GOALS */
+.goal-row{display:grid;grid-template-columns:52px 1fr 90px;border-bottom:3px solid #f2eedf;cursor:crosshair;transition:background .12s,color .12s;align-items:stretch;}
+.inv .goal-row{border-bottom-color:#1a1a1a;}
+.goal-row:last-child{border-bottom:none;}
+.goal-row:hover{background:#d42b2b;}
+.goal-row:hover .g-blurb{color:rgba(255,255,255,.65);}
+.goal-row:hover .g-badge{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7);}
+.goal-row:hover .g-idx{color:#f2eedf;border-right-color:rgba(255,255,255,.15);}
+.goal-row:hover .g-title{color:#f2eedf;}
+.g-idx{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#d42b2b;border-right:3px solid #f2eedf;display:flex;align-items:center;justify-content:center;padding:0;transition:color .12s,border-color .12s;}
+.inv .g-idx{border-right-color:#1a1a1a;}
+.g-body{padding:18px 20px;}
+.g-title{font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;transition:color .12s;}
+.g-blurb{font-family:'Space Mono',monospace;font-size:10px;color:#888;line-height:1.65;transition:color .12s;}
+.inv .g-blurb{color:#666;}
+.g-meta{display:flex;align-items:center;justify-content:flex-end;padding:0 16px;border-left:1px solid rgba(255,255,255,.06);}
+.g-badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;border:1.5px solid #333;color:#666;padding:4px 8px;transition:border-color .12s,color .12s;}
+
+/* FOOTER */
+.footer{background:#0d0d0d;display:grid;grid-template-columns:52px 1fr;border-top:5px solid #d42b2b;}
+.footer-spine{background:#d42b2b;}
+.footer-body{padding:22px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.foot-name{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:3px;color:#f2eedf;text-transform:uppercase;}
+.foot-note{font-family:'Space Mono',monospace;font-size:9px;color:#444;letter-spacing:2px;text-transform:uppercase;}
+
+@media(max-width:580px){
+.about-grid,.int-grid{grid-template-columns:1fr;}
+.int-aside{border-left:none;border-top:3px solid #0d0d0d;flex-direction:row;flex-wrap:wrap;}
+.hero-n1,.hero-n2{font-size:clamp(42px,12vw,72px);}
+.sh-sub{display:none;}
+.c-note,.c-year{display:none;}
+}
+</style>
+
+<div class="site">
+
+<nav class="nav">
+  <div class="nav-id mono">JM_2026</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#career">Career</a>
+    <a href="#interests">Interests</a>
+    <a href="#goals">Goals</a>
+  </div>
+  <div class="nav-right"><span>MEMPHIS, TN</span></div>
+</nav>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    MEMPHIS &nbsp;·&nbsp; FILIPINO AMERICAN &nbsp;·&nbsp; AI STRATEGIST &nbsp;·&nbsp; CAPM CERTIFIED &nbsp;·&nbsp; CS SUMMA CUM LAUDE &nbsp;·&nbsp; BIOINFORMATICS DREAMER &nbsp;·&nbsp; ROTATION SURVIVOR &nbsp;·&nbsp; ROTH IRA OBSESSIVE &nbsp;·&nbsp; INTERNAL CONSULTING &nbsp;·&nbsp; PROCESS THINKER &nbsp;·&nbsp; OPEN TO WORK AUG 2026 &nbsp;·&nbsp;&nbsp; MEMPHIS &nbsp;·&nbsp; FILIPINO AMERICAN &nbsp;·&nbsp; AI STRATEGIST &nbsp;·&nbsp; CAPM CERTIFIED &nbsp;·&nbsp; CS SUMMA CUM LAUDE &nbsp;·&nbsp; BIOINFORMATICS DREAMER &nbsp;·&nbsp; ROTATION SURVIVOR &nbsp;·&nbsp; ROTH IRA OBSESSIVE &nbsp;·&nbsp; INTERNAL CONSULTING &nbsp;·&nbsp; PROCESS THINKER &nbsp;·&nbsp; OPEN TO WORK AUG 2026 &nbsp;·&nbsp;
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-spine"><span>PORTFOLIO — 2026</span></div>
+  <div class="hero-body">
+    <div class="hero-ghost">JM</div>
+    <div class="hero-eyebrow mono">// JOSHUA MAYORES — PERSONAL SITE</div>
+    <span class="hero-n1">JOSHUA</span>
+    <span class="hero-n2">MAYORES</span>
+    <div class="hero-lower">
+      <div class="hero-bio">
+        tech strategist.<br>
+        AI enabler.<br>
+        <strong>chronic overthinker.</strong><br>
+        spreadsheet for everything.
+      </div>
+      <div class="hero-ledger">
+        <div class="hero-ledger-row"><b>924</b>AI conversations</div>
+        <div class="hero-ledger-row"><b>04</b>rotations completed</div>
+        <div class="hero-ledger-row"><b>∞</b>IRA rebalances</div>
+        <div class="hero-ledger-row"><b>01</b>CAPM certified</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="about">
+  <div class="sh">
+    <div class="sh-num">01</div>
+    <div class="sh-title">About</div>
+    <div class="sh-sub">WHO IS THIS PERSON</div>
+  </div>
+  <div class="about-grid">
+    <div class="about-left">
+      <p>I'm <strong>Joshua</strong> — a <em>Filipino American</em> from Memphis, TN. CS degree, Summa Cum Laude, University of Memphis. Currently wrapping my 4th and final rotation at First Horizon. Leaving August 2026 for something that actually fits.</p>
+      <p>Not a banker. Not a pure coder. I live in the space between tech, communication, and AI strategy — making complex things feel simple, building frameworks that get used, and writing emails that actually get read.</p>
+      <p>I think AI should be a thinking partner, not just a search engine. I want <em>meaningful work</em> and I'm not apologizing for that.</p>
+      <div class="tag-row">
+        <span class="tag r">Filipino American</span>
+        <span class="tag">Memphis, TN</span>
+        <span class="tag">CS Graduate</span>
+        <span class="tag">AI Enabler</span>
+        <span class="tag">Process Thinker</span>
+        <span class="tag">CAPM</span>
+        <span class="tag">Gay</span>
+      </div>
+    </div>
+    <div class="about-right">
+      <table class="facts-table">
+        <tr><td>Full name</td><td>Joshua Mayores</td></tr>
+        <tr><td>Age</td><td>23–24</td></tr>
+        <tr><td>Location</td><td>Memphis, TN</td></tr>
+        <tr><td>Degree</td><td>B.S. Computer Science</td></tr>
+        <tr><td>School</td><td>U of Memphis</td></tr>
+        <tr><td>Honours</td><td>Summa Cum Laude</td></tr>
+        <tr><td>Current role</td><td>Internal Consulting</td></tr>
+        <tr><td>Company</td><td>First Horizon</td></tr>
+        <tr><td>Cert</td><td>CAPM</td></tr>
+        <tr><td>Superpower</td><td>AI Adoption</td></tr>
+        <tr><td>Available</td><td>August 2026</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="career" class="inv">
+  <div class="sh">
+    <div class="sh-num">02</div>
+    <div class="sh-title">Career</div>
+    <div class="sh-sub">INDEX / ALL ROLES — HOVER A ROW</div>
+  </div>
+  <table class="career-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Role</th>
+        <th>Company</th>
+        <th>Year</th>
+        <th>Status</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="live">
+        <td class="c-num">01</td>
+        <td class="c-role">Internal Consulting Associate</td>
+        <td class="c-company">First Horizon</td>
+        <td class="c-year">2026</td>
+        <td class="c-status">▶ Active</td>
+        <td class="c-note">4th &amp; final rotation. Exits Aug 2026. Looking for what comes next.</td>
+      </tr>
+      <tr>
+        <td class="c-num">02</td>
+        <td class="c-role">AI Champion &amp; Operations Lead</td>
+        <td class="c-company">First Horizon</td>
+        <td class="c-year">2025</td>
+        <td class="c-status">Complete</td>
+        <td class="c-note">Built ChatFHN AI adoption program. Trained staff. Biggest differentiator.</td>
+      </tr>
+      <tr>
+        <td class="c-num">03</td>
+        <td class="c-role">IT Risk Analyst</td>
+        <td class="c-company">First Horizon</td>
+        <td class="c-year">2024–25</td>
+        <td class="c-status">Complete</td>
+        <td class="c-note">MITRE ATT&amp;CK risk framework built from scratch. Splunk. Threat modeling.</td>
+      </tr>
+      <tr>
+        <td class="c-num">04</td>
+        <td class="c-role">Data Management Analyst</td>
+        <td class="c-company">First Horizon</td>
+        <td class="c-year">2024</td>
+        <td class="c-status">Complete</td>
+        <td class="c-note">SQL, SAS, PROC SQL. Sharp skills. Wrong lane.</td>
+      </tr>
+      <tr>
+        <td class="c-num">05</td>
+        <td class="c-role">Cybersecurity Intern</td>
+        <td class="c-company">Undisclosed</td>
+        <td class="c-year">2023</td>
+        <td class="c-status">Complete</td>
+        <td class="c-note">Splunk, threat intelligence. First real taste of security work.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="skills-bar">
+    <span class="sk">Python</span>
+    <span class="sk">SQL / SAS</span>
+    <span class="sk">MITRE ATT&CK</span>
+    <span class="sk">Excel</span>
+    <span class="sk">AI Strategy</span>
+    <span class="sk">CAPM</span>
+    <span class="sk">Splunk</span>
+    <span class="sk">ServiceNow</span>
+    <span class="sk">React</span>
+    <span class="sk">Agile</span>
+    <span class="sk">Process Design</span>
+    <span class="sk">Technical Writing</span>
+  </div>
+</div>
+
+<div id="interests">
+  <div class="sh">
+    <div class="sh-num">03</div>
+    <div class="sh-title">Interests</div>
+    <div class="sh-sub">WHAT I ACTUALLY CARE ABOUT</div>
+  </div>
+  <div class="int-grid">
+    <div class="int-rows">
+      <div class="int-row">
+        <div class="int-icon" aria-hidden="true"><i class="ti ti-microscope" style="font-size:20px"></i></div>
+        <div class="int-text">
+          <div class="int-name r">Bioinformatics</div>
+          <div class="int-blurb">The dream. Tech + science with direct impact on human health. Recurring since 2023. No formal steps yet — but the pull is too strong to ignore forever.</div>
+        </div>
+      </div>
+      <div class="int-row">
+        <div class="int-icon" aria-hidden="true"><i class="ti ti-cpu" style="font-size:20px"></i></div>
+        <div class="int-text">
+          <div class="int-name">AI &amp; Automation</div>
+          <div class="int-blurb">Not just a user — a builder. Designed AI personas, built training programs, wrote internal AI policy at a bank. This is my differentiator and I'm leaning in hard.</div>
+        </div>
+      </div>
+      <div class="int-row">
+        <div class="int-icon" aria-hidden="true"><i class="ti ti-trending-up" style="font-size:20px"></i></div>
+        <div class="int-text">
+          <div class="int-name">Personal Finance</div>
+          <div class="int-blurb">FZROX/FZILX/FBTC Roth IRA allocation at 11pm. Rocket Money always open. Bitcoin + Ethereum. It's a whole thing and I'm okay with that.</div>
+        </div>
+      </div>
+      <div class="int-row">
+        <div class="int-icon" aria-hidden="true"><i class="ti ti-barbell" style="font-size:20px"></i></div>
+        <div class="int-text">
+          <div class="int-name">Fitness</div>
+          <div class="int-blurb">Full-body A/B splits. Intermittent fasting. Recomping not cutting. Celsius is a personality. Consistency is a work in progress — especially after vacation.</div>
+        </div>
+      </div>
+      <div class="int-row">
+        <div class="int-icon" aria-hidden="true"><i class="ti ti-music" style="font-size:20px"></i></div>
+        <div class="int-text">
+          <div class="int-name">Music</div>
+          <div class="int-blurb">Daily mental reset. Taste is wide and unapologetic.</div>
+        </div>
+      </div>
+    </div>
+    <div class="int-aside">
+      <div>
+        <div class="aside-label">Current fixation</div>
+        <div class="aside-big"><span>Bio-</span><br>info-<br>rmatics</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:#888;line-height:1.8;margin-top:8px;">recurring since 2023.<br>still no formal steps.<br>the pull is real.</div>
+      </div>
+      <div style="border-top:2px solid #ddd;padding-top:16px;">
+        <div class="aside-label">Also thinking about</div>
+        <div class="aside-list">
+          <span>→</span> Masters degree<br>
+          <span>→</span> Own apartment<br>
+          <span>→</span> Honda Accord<br>
+          <span>→</span> Python refresh<br>
+          <span>→</span> Cold wallet
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="goals" class="inv">
+  <div class="sh">
+    <div class="sh-num">04</div>
+    <div class="sh-title">Goals</div>
+    <div class="sh-sub">HOVER EACH ROW</div>
+  </div>
+  <div>
+    <div class="goal-row">
+      <div class="g-idx">01</div>
+      <div class="g-body">
+        <div class="g-title">Land the right next role</div>
+        <div class="g-blurb">IT Project Lead / AI Strategy / BA — $75K–$80K+. Done with banking. FedEx + Medtronic in pipeline. August 2026 hard deadline.</div>
+      </div>
+      <div class="g-meta"><span class="g-badge">In progress</span></div>
+    </div>
+    <div class="goal-row">
+      <div class="g-idx">02</div>
+      <div class="g-body">
+        <div class="g-title">Get my own apartment</div>
+        <div class="g-blurb">First independent living. Memphis. $1,200–$1,450/mo. Alone. Waiting on salary clarity before signing anything.</div>
+      </div>
+      <div class="g-meta"><span class="g-badge">Pending</span></div>
+    </div>
+    <div class="goal-row">
+      <div class="g-idx">03</div>
+      <div class="g-body">
+        <div class="g-title">Pursue a master's degree</div>
+        <div class="g-blurb">MS Information Systems or adjacent. Remote-friendly. Affordable. Start while working. No decision yet — still researching.</div>
+      </div>
+      <div class="g-meta"><span class="g-badge">Researching</span></div>
+    </div>
+    <div class="goal-row">
+      <div class="g-idx">04</div>
+      <div class="g-body">
+        <div class="g-title">Pivot toward bioinformatics</div>
+        <div class="g-blurb">The long-range dream. Direct impact on science + health through tech. No structural steps yet. 3–5 year horizon.</div>
+      </div>
+      <div class="g-meta"><span class="g-badge">3–5 yrs</span></div>
+    </div>
+    <div class="goal-row">
+      <div class="g-idx">05</div>
+      <div class="g-body">
+        <div class="g-title">Financial independence</div>
+        <div class="g-blurb">Maxed Roth IRA. Savings past $15K. Honda Accord or Civic. Not FIRE — just freedom to choose without the floor dropping out.</div>
+      </div>
+      <div class="g-meta"><span class="g-badge">Active</span></div>
+    </div>
+    <div class="goal-row">
+      <div class="g-idx">06</div>
+      <div class="g-body">
+        <div class="g-title">Body recomposition</div>
+        <div class="g-blurb">155–160 lbs. Strong and sustainable. Less about the scale number, more about showing up 4x a week without negotiating.</div>
+      </div>
+      <div class="g-meta"><span class="g-badge">Ongoing</span></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-spine"></div>
+  <div class="footer-body">
+    <div class="foot-name">Joshua Mayores</div>
+    <div class="foot-note">Memphis, TN &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; Built brutally</div>
+  </div>
+</footer>
+
+</div>
