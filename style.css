@@ -333,6 +333,9 @@ html {
   background: #0d0d0d;
   color: #f2eedf;
 }
+.table-scroll {
+  overflow-x: auto;
+}
 .career-table {
   width: 100%;
   border-collapse: collapse;
@@ -614,6 +617,26 @@ html {
 }
 
 @media (max-width: 580px) {
+  .nav {
+    flex-wrap: wrap;
+  }
+  .nav-id {
+    flex: 1 1 100%;
+    border-right: none;
+    border-bottom: 2px solid #2a2a2a;
+  }
+  .nav-links {
+    flex: 1 1 100%;
+  }
+  .nav-links a {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 4px;
+    font-size: 9px;
+  }
+  .nav-right {
+    display: none;
+  }
   .about-grid {
     grid-template-columns: 1fr;
   }
@@ -628,8 +651,18 @@ html {
   .sh-sub {
     display: none;
   }
-  .c-note,
-  .c-year {
-    display: none;
+  .c-note {
+    min-width: 200px;
+    max-width: none;
+  }
+  .c-role,
+  .c-company {
+    white-space: nowrap;
+  }
+  .g-body {
+    min-width: 0;
+  }
+  .g-title {
+    overflow-wrap: break-word;
   }
 }
